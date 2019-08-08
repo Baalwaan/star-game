@@ -1,0 +1,14 @@
+.star {
+  color: blue;
+  font-size: 3em;
+}
+
+.stars-container {
+  padding: 1em;
+  width: 10em;
+  height: 10em;
+  border: solid black 1px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
