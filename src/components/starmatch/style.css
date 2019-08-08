@@ -1,0 +1,13 @@
+.numbers-container {
+  padding: 1em;
+  width: 10em;
+  height: 10em;
+  border: solid black 1px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.game-container {
+  display: flex;
+}
