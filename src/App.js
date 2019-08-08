@@ -1,7 +1,9 @@
 import React from 'react';
 import './App.css';
 
+import StarMatch from './components/StarMatch';
+
 function App() {
-  return <div>heloo</div>;
+  return <StarMatch />;
 }
 export default App;
