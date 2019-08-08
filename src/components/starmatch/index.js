@@ -11,6 +11,27 @@ import { sum, range, random, randomSumIn } from '../../utils';
 
 const StarMatch = () => {
   const [stars, setStars] = React.useState(random(1, 9));
+  const [availableNums, setAvailableNums] = React.useState([1, 2, 3, 4, 5]);
+  const [candidateNums, setCandidateNums] = React.useState([2, 3]);
+
+  const candidatesAreWrong = sum(candidateNums) > stars;
+
+  const numberStatus = number => {
+    if (!availableNums.includes(number)) {
+      return 'used';
+    }
+
+    if (candidateNums.includes(number)) {
+      return candidatesAreWrong ? 'wrong' : 'candidate';
+    }
+
+    return 'available';
+  };
+
+  //candidateNUms
+  //wrongNUmbs
+  //usedNums
+  //availableNums
 
   return (
     <>
@@ -22,7 +43,11 @@ const StarMatch = () => {
 
         <div className="numbers-container">
           {range(1, 9).map(number => (
-            <Number key={number} number={number} />
+            <Number
+              key={number}
+              number={number}
+              status={numberStatus(number)}
+            />
           ))}
         </div>
       </section>
