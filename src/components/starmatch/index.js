@@ -16,6 +16,7 @@ const StarMatch = () => {
   const [candidateNums, setCandidateNums] = React.useState([]);
 
   const candidatesAreWrong = sum(candidateNums) > stars;
+  const gameIsDone = availableNums.length === 0;
 
   const numberStatus = number => {
     //this function sets the color of the button depending on what it returns
@@ -63,7 +64,7 @@ const StarMatch = () => {
         <h1>Pick 1 or more numbers that sum to the number of stars</h1>
       </div>
       <section className="game-container">
-        <StarDisplay count={stars} />
+        {gameIsDone ? <PlayAgain /> : <StarDisplay count={stars} />}
 
         <div className="numbers-container">
           {range(1, 9).map(number => (
