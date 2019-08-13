@@ -89,11 +89,10 @@ const Game = props => {
   };
 
   return (
-    <>
-      <div>
-        <h1>Pick 1 or more numbers that sum to the number of stars</h1>
-      </div>
-      <section className="game-container">
+    <section className="main-container">
+      <h1>Pick 1 or more numbers that sum to the number of stars</h1>
+
+      <div className="game-container">
         <div className="stars-container">
           {gameStatus !== 'active' ? (
             <PlayAgain onClick={props.startNewGame} gameStatus={gameStatus} />
@@ -111,9 +110,9 @@ const Game = props => {
             />
           ))}
         </div>
-        <p>Seconds Remaining : {secondsLeft}</p>
-      </section>
-    </>
+      </div>
+      <p>Seconds Remaining : {secondsLeft}</p>
+    </section>
   );
 };
 

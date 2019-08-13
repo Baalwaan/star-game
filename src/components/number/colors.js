@@ -1,5 +1,5 @@
 const colors = {
-  available: 'lightgray',
+  available: 'darkgray',
   used: 'lightgreen',
   wrong: 'lightcoral',
   candidate: 'deepskyblue'
