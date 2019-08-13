@@ -11,8 +11,8 @@ import { sum, range, random, randomSumIn } from '../../utils';
 
 const StarMatch = () => {
   const [stars, setStars] = React.useState(random(1, 9));
-  const [availableNums, setAvailableNums] = React.useState([1, 2, 3, 4, 5]);
-  const [candidateNums, setCandidateNums] = React.useState([2, 3]);
+  const [availableNums, setAvailableNums] = React.useState([utils.range(1, 9)]);
+  const [candidateNums, setCandidateNums] = React.useState([]);
 
   const candidatesAreWrong = sum(candidateNums) > stars;
 
