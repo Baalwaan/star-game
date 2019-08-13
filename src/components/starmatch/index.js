@@ -10,7 +10,7 @@ import PlayAgain from '../playagain';
 //utils
 import { sum, range, random, randomSumIn } from '../../utils';
 
-const StarMatch = () => {
+const Game = props => {
   const [stars, setStars] = React.useState(random(1, 9));
   const [availableNums, setAvailableNums] = React.useState(range(1, 9));
   const [candidateNums, setCandidateNums] = React.useState([]);
@@ -33,13 +33,6 @@ const StarMatch = () => {
 
   const gameStatus =
     availableNums.length === 0 ? 'won' : secondsleft === 0 ? 'lost' : 'active';
-
-  const resetGame = () => {
-    setStars(random(1, 9));
-    setAvailableNums(range(1, 9));
-    setCandidateNums([]);
-    setSecondsLeft(10);
-  };
 
   const numberStatus = number => {
     //this function sets the color of the button depending on what it returns
@@ -86,7 +79,7 @@ const StarMatch = () => {
       <section className="game-container">
         <div className="stars-container">
           {gameStatus !== 'active' ? (
-            <PlayAgain onClick={resetGame} gameStatus={gameStatus} />
+            <PlayAgain onClick={props.startNewGame} gameStatus={gameStatus} />
           ) : (
             <StarDisplay count={stars} />
           )}
@@ -105,6 +98,11 @@ const StarMatch = () => {
       </section>
     </>
   );
+};
+
+const StarMatch = () => {
+  const [gameId, setGameId] = React.useState(1);
+  return <Game key={gameId} startNewGame={() => setGameId(gameId + 1)} />;
 };
 
 export default StarMatch;
