@@ -11,12 +11,13 @@ import { sum, range, random, randomSumIn } from '../../utils';
 
 const StarMatch = () => {
   const [stars, setStars] = React.useState(random(1, 9));
-  const [availableNums, setAvailableNums] = React.useState([range(1, 9)]);
+  const [availableNums, setAvailableNums] = React.useState(range(1, 9));
   const [candidateNums, setCandidateNums] = React.useState([]);
 
   const candidatesAreWrong = sum(candidateNums) > stars;
 
   const numberStatus = number => {
+    //this function sets the color of the button depending on what it returns
     if (!availableNums.includes(number)) {
       return 'used';
     }
@@ -28,10 +29,32 @@ const StarMatch = () => {
     return 'available';
   };
 
-  //candidateNUms
-  //wrongNUmbs
-  //usedNums
-  //availableNums
+  const onNumberClick = (number, currentStatus) => {
+    if (currentStatus === 'used') {
+      console.log('used');
+      return;
+    }
+    //candidatenumbers
+    const newCandidateNums =
+      currentStatus === 'available'
+        ? candidateNums.concat(number)
+        : candidateNums.filter(cn => cn !== number);
+
+    if (sum(newCandidateNums) !== stars) {
+      setCandidateNums(newCandidateNums);
+      console.log('if');
+    } else {
+      console.log('else');
+      const newAvailableNums = availableNums.filter(
+        n => !newCandidateNums.includes(n)
+      );
+
+      setStars(randomSumIn(newAvailableNums, 9)); // //redraw number of stars. only redraw number of stars that are still playable
+      setAvailableNums(newAvailableNums);
+      setCandidateNums([]);
+    }
+    //currentStatus => newStatus
+  };
 
   return (
     <>
@@ -47,6 +70,7 @@ const StarMatch = () => {
               key={number}
               number={number}
               status={numberStatus(number)}
+              onClick={onNumberClick}
             />
           ))}
         </div>
