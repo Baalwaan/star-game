@@ -111,7 +111,18 @@ const Game = props => {
           ))}
         </div>
       </div>
-      <p>Seconds Remaining : {secondsLeft}</p>
+      <p className="timer">
+        Seconds Remaining :{' '}
+        <span
+          className="seconds"
+          style={{
+            color: secondsLeft <= 3 ? 'red' : 'black',
+            fontWeight: 'bold'
+          }}
+        >
+          {secondsLeft}
+        </span>
+      </p>
     </section>
   );
 };
