@@ -5,6 +5,7 @@ import './style.css';
 // components
 import StarDisplay from '../stardisplay';
 import PlayNumber from '../number';
+import PlayAgain from '../playagain';
 
 //utils
 import { sum, range, random, randomSumIn } from '../../utils';
