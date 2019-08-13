@@ -14,14 +14,31 @@ const StarMatch = () => {
   const [stars, setStars] = React.useState(random(1, 9));
   const [availableNums, setAvailableNums] = React.useState(range(1, 9));
   const [candidateNums, setCandidateNums] = React.useState([]);
+  const [secondsleft, setSecondsLeft] = React.useState(10);
+
+  //sesetTimeout
+
+  React.useEffect(() => {
+    if (secondsleft > 0 && availableNums.length > 0) {
+      //only intro new time if seconds left are greater than 0
+      const timerId = setTimeout(() => {
+        setSecondsLeft(secondsleft - 1);
+      }, 1000);
+      return () => clearTimeout(timerId);
+    }
+  });
 
   const candidatesAreWrong = sum(candidateNums) > stars;
-  const gameIsDone = availableNums.length === 0;
+  // const gameIsDone = availableNums.length === 0;
+
+  const gameStatus =
+    availableNums.length === 0 ? 'won' : secondsleft === 0 ? 'lost' : 'active';
 
   const resetGame = () => {
     setStars(random(1, 9));
     setAvailableNums(range(1, 9));
     setCandidateNums([]);
+    setSecondsLeft(10);
   };
 
   const numberStatus = number => {
@@ -38,8 +55,7 @@ const StarMatch = () => {
   };
 
   const onNumberClick = (number, currentStatus) => {
-    if (currentStatus === 'used') {
-      console.log('used');
+    if (gameStatus !== 'active' && currentStatus === 'used') {
       return;
     }
     //candidatenumbers
@@ -50,9 +66,7 @@ const StarMatch = () => {
 
     if (sum(newCandidateNums) !== stars) {
       setCandidateNums(newCandidateNums);
-      console.log('if');
     } else {
-      console.log('else');
       const newAvailableNums = availableNums.filter(
         n => !newCandidateNums.includes(n)
       );
@@ -71,8 +85,8 @@ const StarMatch = () => {
       </div>
       <section className="game-container">
         <div className="stars-container">
-          {gameIsDone ? (
-            <PlayAgain onClick={resetGame} />
+          {gameStatus !== 'active' ? (
+            <PlayAgain onClick={resetGame} gameStatus={gameStatus} />
           ) : (
             <StarDisplay count={stars} />
           )}
@@ -87,6 +101,7 @@ const StarMatch = () => {
             />
           ))}
         </div>
+        <p>Seconds Remaining : {secondsleft}</p>
       </section>
     </>
   );
