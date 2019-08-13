@@ -11,16 +11,13 @@ import { sum, range, random, randomSumIn } from '../../utils';
 
 const StarMatch = () => {
   const [stars, setStars] = React.useState(random(1, 9));
-<<<<<<< Updated upstream
-  const [availableNums, setAvailableNums] = React.useState([utils.range(1, 9)]);
-=======
   const [availableNums, setAvailableNums] = React.useState(range(1, 9));
->>>>>>> Stashed changes
   const [candidateNums, setCandidateNums] = React.useState([]);
 
   const candidatesAreWrong = sum(candidateNums) > stars;
 
   const numberStatus = number => {
+    //this function sets the color of the button depending on what it returns
     if (!availableNums.includes(number)) {
       return 'used';
     }
@@ -37,9 +34,11 @@ const StarMatch = () => {
       console.log('used');
       return;
     }
-
-    //candidateNumbs
-    const newCandidateNums = candidateNums.concat(number);
+    //candidatenumbers
+    const newCandidateNums =
+      currentStatus === 'available'
+        ? candidateNums.concat(number)
+        : candidateNums.filter(cn => cn !== number);
 
     if (sum(newCandidateNums) !== stars) {
       setCandidateNums(newCandidateNums);
@@ -56,11 +55,6 @@ const StarMatch = () => {
     }
     //currentStatus => newStatus
   };
-
-  //candidateNUms
-  //wrongNUmbs
-  //usedNums
-  //availableNums
 
   return (
     <>
