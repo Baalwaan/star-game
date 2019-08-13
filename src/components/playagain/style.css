@@ -1,4 +1,16 @@
 .message {
   font-weight: bold;
   text-align: center;
+  font-size: 1.5em;
+}
+
+.newgame-button {
+  font-size: 1.1em;
+  border: solid black 1px;
+  outline: none;
+  background: darkgrey;
+}
+
+button:active {
+  transform: scale(0.95);
 }

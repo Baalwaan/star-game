@@ -1,23 +1,19 @@
-.numbers-container {
-  padding: 1em;
-  width: 10em;
-  height: 10em;
-  border: solid black 1px;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-around;
+.main-container {
+  text-align: center;
 }
+
+.numbers-container,
 .stars-container {
-  padding: 1em;
-  width: 10em;
-  height: 10em;
-  border: solid black 1px;
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-around;
-  background: yellow;
+  justify-content: space-between;
+  width: 10em;
+  height: 10em;
+  padding: 1em;
+  border: solid black 1px;
 }
 
 .game-container {
   display: flex;
+  justify-content: center;
 }
