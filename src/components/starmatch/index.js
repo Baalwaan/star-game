@@ -18,6 +18,12 @@ const StarMatch = () => {
   const candidatesAreWrong = sum(candidateNums) > stars;
   const gameIsDone = availableNums.length === 0;
 
+  const resetGame = () => {
+    setStars(random(1, 9));
+    setAvailableNums(range(1, 9));
+    setCandidateNums([]);
+  };
+
   const numberStatus = number => {
     //this function sets the color of the button depending on what it returns
     if (!availableNums.includes(number)) {
@@ -65,7 +71,11 @@ const StarMatch = () => {
       </div>
       <section className="game-container">
         <div className="stars-container">
-          {gameIsDone ? <PlayAgain /> : <StarDisplay count={stars} />}
+          {gameIsDone ? (
+            <PlayAgain onClick={resetGame} />
+          ) : (
+            <StarDisplay count={stars} />
+          )}
         </div>
         <div className="numbers-container">
           {range(1, 9).map(number => (
