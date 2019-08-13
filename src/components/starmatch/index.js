@@ -64,8 +64,9 @@ const StarMatch = () => {
         <h1>Pick 1 or more numbers that sum to the number of stars</h1>
       </div>
       <section className="game-container">
-        {gameIsDone ? <PlayAgain /> : <StarDisplay count={stars} />}
-
+        <div className="stars-container">
+          {gameIsDone ? <PlayAgain /> : <StarDisplay count={stars} />}
+        </div>
         <div className="numbers-container">
           {range(1, 9).map(number => (
             <PlayNumber

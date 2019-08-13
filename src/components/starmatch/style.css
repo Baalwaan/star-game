@@ -7,6 +7,16 @@
   flex-wrap: wrap;
   justify-content: space-around;
 }
+.stars-container {
+  padding: 1em;
+  width: 10em;
+  height: 10em;
+  border: solid black 1px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  background: yellow;
+}
 
 .game-container {
   display: flex;
