@@ -2,7 +2,7 @@ import React from 'react';
 
 import './style.css';
 
-import { sum, range, random, randomSumIn } from '../../utils';
+import { range } from '../../utils';
 
 const StarDisplay = ({ count }) => (
   <>
