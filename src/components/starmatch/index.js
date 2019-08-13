@@ -4,7 +4,7 @@ import './style.css';
 
 // components
 import StarDisplay from '../stardisplay';
-import Number from '../number';
+import PlayNumber from '../number';
 
 //utils
 import { sum, range, random, randomSumIn } from '../../utils';
@@ -43,7 +43,7 @@ const StarMatch = () => {
 
         <div className="numbers-container">
           {range(1, 9).map(number => (
-            <Number
+            <PlayNumber
               key={number}
               number={number}
               status={numberStatus(number)}
